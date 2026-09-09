@@ -15,6 +15,10 @@ app.get("/home", (req,res)=> {
     return res.json({"hello":"world"});
 });
 
+app.get("/", (req,res) => {
+      res.send("Hi, I am root");
+})
+
 const start = async () => {
     try {
         const MONGO_URL = process.env.MONGODB_URL;
@@ -25,8 +29,7 @@ const start = async () => {
             console.log("server is listening on port 8000");
         })
     }catch(error) {
-        console.error("MongoDB connection failed!");
-        console.log("MONGODB_URL:", process.env.MONGODB_URL);
+        console.error("MongoDB connection failed!",  error.message);
     }
 
     
