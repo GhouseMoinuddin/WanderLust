@@ -9,13 +9,8 @@ const listingSchema = new Schema({
     description:String,
     image:{
         type:String,
-        set: (v) => {
-            if(v === "") {
-                "link"
-            }else {
-               v;
-            }
-        }
+        default:"https://unsplash.com/photos/coastal-road-along-bay-at-golden-hour-7yf4-H-h0Mk",
+        set:(v) => v = ""? "https://unsplash.com/photos/coastal-road-along-bay-at-golden-hour-7yf4-H-h0Mk": v,
     },
     price:Number,
     location:String,

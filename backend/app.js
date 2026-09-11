@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import ejs from "ejs";
 import dotenv from "dotenv";
+import Listing from "./models/listing.js";
 dotenv.config();
 const app = express();
 
@@ -17,6 +18,20 @@ app.get("/home", (req,res)=> {
 
 app.get("/", (req,res) => {
       res.send("Hi, I am root");
+})
+
+app.get("/test", async (req,res) => {
+    let sampleListing = new Listing({
+        title:"My home villa",
+        description:"welcome",
+        price:"2000",
+        location:"hyderabad",
+        country:"India"
+    });
+
+    await sampleListing.save();
+    console.log("Done");
+    res.send("testing done!");
 })
 
 const start = async () => {
