@@ -4,6 +4,12 @@ import cors from "cors";
 import ejs from "ejs";
 import dotenv from "dotenv";
 import Listing from "./models/listing.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 dotenv.config();
 const app = express();
 
@@ -16,13 +22,24 @@ app.get("/home", (req, res) => {
     return res.json({ "hello": "world" });
 });
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"))
+
+
 app.get("/", (req, res) => {
     res.send("Hi, I am root");
 })
 
+//Index Route
 app.get("/listings", async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("index.ejs", { allListings });
+    res.render("listings/index.ejs", { allListings });
+})
+
+//show route
+
+app.get("/listings/:id", (req, res) => {
+    let { id } = req.params;
 })
 
 // app.get("/test", async (req,res) => {
