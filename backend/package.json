@@ -16,6 +16,7 @@
     "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
+    "method-override": "^3.0.0",
     "mongoose": "^9.9.5"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     "nodemon@3.1.14": true,
     "cors@2.8.6": true,
     "ejs@6.0.1": true,
-    "dotenv@17.4.2": true
+    "dotenv@17.4.2": true,
+    "method-override@3.0.0": true
   }
 }
